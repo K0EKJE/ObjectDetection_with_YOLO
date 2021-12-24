@@ -1,5 +1,6 @@
 # ObjectDetection_with_YOLO
-Some example ouput
+
+## Example ouput
 
 <img src="Example Detected Objects/westwood1.jpeg" style="width:400px;height:300px;">  <img src="Example Detected Objects/pedestrian.jpeg" style="width:450px;height:300px;" title = "Figure">   
 Figure 1 & 2
