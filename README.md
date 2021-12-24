@@ -20,13 +20,18 @@ First, I directly clone the project from https://github.com/allanzelener/yad2k.g
     video_with_prediction : Helper function to predict and draw bounding boxes from input image folder, then outputs to output folder
     to_video : Create video in folder video/Output Videos/default or video/Output Videos/improved/ according to mode input value
 
+The main modification I did in the `improved_yolo_filter_boxes` function is that I add an additional threshold on class confidence. According to the design of this algorithm, the ouput of neural network will contain a class confidence value for each anchor(five in total) in each grid(19 * 19 in total). It predicts the probability of having an object in that anchor. Originally, the algotithm filters the boxes by the scores obtained from multiplying box confidence and class prabability. I added an additional criteria to ensure that the prabablity of having an object in that anchor exceeds 0.4(by default; can be tuned). 
+In some cases, it is effective in filtering out overlapping boxes that predict the same class. Examples can be seen as follow(pictures produced by improved function is on the right, and default is on the left): 
 
+Old & New
 
+<img src="Example Detected Objects/example_IDLE_group_default.jpg" style="width:450px;height:300px;"> <img src="Example Detected Objects/example_IDLE_group.jpg" style="width:450px;height:300px;"> 
 
-<img src="Example Detected Objects/example_IDLE_group_default.jpg" style="width:450px;height:300px;">
+<img src="video/Output Images/horses/000143.jpg" style="width:450px;height:300px;">	 <img src="video/Output Images Improved/horses/000143.jpg" style="width:450px;height:300px;">	
 
+These are some of the positive examples. However, the low class confidence can also result from distance and inadaquate information. For example, in the case where there are a lot of cars, the improved version fails to detect cars that are largely concealed. Examples can be seen as follow(one random frame in the video westwood1): 
 
-
+<img src="video/Output Images/westwood1/000290.jpg" style="width:450px;height:300px;"> <img src="video/Output Images Improved/westwood1/000290.jpg" style="width:450px;height:300px;">
 
 
 
