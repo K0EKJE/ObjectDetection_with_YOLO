@@ -7,7 +7,11 @@ Figure 1 & 2
 <img src="Example Detected Objects/example_IDLE_group.jpg" style="width:450px;height:300px;">  <img src="Example Detected Objects/person.jpg" style="width:400px;height:300px;">  
 Figure 3(with customized filter function) & 4
 
+## Purpose 
+
 In order to better understand the implementation and application of YOLO algorithm, I implemented some of the key functions of the YOLO algorithm, made my customized improvement on the `yolo_filter_boxes` function, and finally applied the algorithm to two short videos in this project. 
+
+## Process
 
 First, I directly clone the project from https://github.com/allanzelener/yad2k.git in order to get access to some of the helper functions, and I used the pretrained model from the official YOLO website https://pjreddie.com/darknet/yolo/. The pretrained model supports object detection for over 80 classes of objects. Then I implemented the following functions in sequence.
 
@@ -19,6 +23,8 @@ First, I directly clone the project from https://github.com/allanzelener/yad2k.g
     predict : Predict and draw boxes on input image.
     video_with_prediction : Helper function to predict and draw bounding boxes from input image folder, then outputs to output folder
     to_video : Create video in folder video/Output Videos/default or video/Output Videos/improved/ according to mode input value
+
+## Result
 
 The main modification I did in the `improved_yolo_filter_boxes` function is that I add an additional threshold on class confidence. According to the design of this algorithm, the ouput of neural network will contain a class confidence value for each anchor(five in total) in each grid(19 * 19 in total). It predicts the probability of having an object in that anchor. Originally, the algotithm filters the boxes by the scores obtained from multiplying box confidence and class prabability. I added an additional criteria to ensure that the prabablity of having an object in that anchor exceeds 0.4(by default; can be tuned). 
 In some cases, it is effective in filtering out overlapping boxes that predict the same class. Examples can be seen as follow(pictures produced by improved function is on the right, and default is on the left): 
