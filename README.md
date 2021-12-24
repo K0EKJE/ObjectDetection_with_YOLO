@@ -40,5 +40,7 @@ These are some of the positive examples. However, the low class confidence can a
 
 <img src="video/Output Images/westwood1/000290.jpg" style="width:450px;height:300px;"> <img src="video/Output Images Improved/westwood1/000290.jpg" style="width:450px;height:300px;">
 
+## Reflection 
 
+There are multiple ways to control the threshold. By design, the algorithm can adjust it by changing the threshold on scores. It may have advantage on some cases; but in this project I chose an another implementation because I beleive the problem of overlapping boxes that predict on same classes can be better addressed by a condition on class confidence. To further improve the accuracy on specific classes, I can overfit the pretrained model on those classes. 
 
