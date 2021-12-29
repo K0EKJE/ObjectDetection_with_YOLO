@@ -1,4 +1,4 @@
-# ObjectDetection_with_YOLO
+# ObjectDetection_with_YOLOV2
 
 ## Example ouput
 
