@@ -27,7 +27,7 @@ First, I directly clone the project from https://github.com/allanzelener/yad2k.g
 
 ## Result
 
-The main modification I did in the `improved_yolo_filter_boxes` function is that I add an additional threshold on class confidence. According to the design of this algorithm, the ouput of neural network will contain a class confidence value for each anchor(five in total) in each grid(19 * 19 in total). It predicts the probability of having an object in that anchor. Originally, the algotithm filters the boxes by the scores obtained from multiplying box confidence and class prabability. I added an additional criteria to ensure that the prabablity of having an object in that anchor exceeds 0.4(by default; can be tuned). 
+The main modification I did in the `improved_yolo_filter_boxes` function is that I add an additional threshold on class confidence. According to the design of this algorithm, the ouput of neural network will contain a class confidence value for each anchor(five in total) in each grid(19 * 19 in total). It predicts the probability of having an object in that anchor. Originally, the algotithm filters the boxes by the scores obtained from multiplying box confidence and class probability. I added an additional criteria to ensure that the probablity of having an object in that anchor exceeds 0.4(by default; can be tuned). 
 In some cases, it is effective in filtering out overlapping boxes that predict the same class. Examples can be seen as follow(pictures produced by improved function is on the right, and default is on the left): 
 
 Old & New
